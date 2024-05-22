@@ -50,10 +50,10 @@ class AdminTestCase(TestCase):
 
     def test_driver_assign_to_car(self):
         response = self.client.get(
-            reverse("taxi:toggle_assign_to_car", args=[self.car.pk])
+            reverse("taxi:toggle-car-assign", args=[self.car.pk])
         )
         self.assertEqual(response.status_code, 302)
         self.assertTrue(
             self.car.drivers.filter(
-                pk=self.user.pk).exists()
+                pk=self.driver.pk).exists()
         )
